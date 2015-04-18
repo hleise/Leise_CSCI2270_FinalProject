@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1429394566 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	"Utilities.h"
+
+1429394566 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Utilities.h
+
+1429394566 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
+	"Utilities.h"
+	<iostream>
+
