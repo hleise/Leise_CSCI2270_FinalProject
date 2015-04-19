@@ -2,6 +2,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include "Utilities.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ void printRules()
         cout << "Unable to open file" << endl;
     }
 
-    // waits for user to press 'M'
+    // waits for user to press Enter
     cout << endl;
     cout << "Press Enter to return to the menu" << endl;
     string input;
@@ -52,9 +53,11 @@ void getMenuInput()
 
     // runs action according to input
     if (input == "1") {
-        cout << "You selected Solo" << endl;
+        Utilities::clearScreen();
+        Game(1);
     } else if (input == "2") {
-        cout << "You selected Two Player" << endl;
+        Utilities::clearScreen();
+        Game(2);
     } else if (input == "3") {
         printRules();
     } else if (input == "4") {
@@ -74,7 +77,7 @@ void menu()
     cout << endl;
     cout << "  1. Solo" << endl;
     cout << "  2. Two Player" << endl;
-    cout << "  3. Rules" << endl;
+    cout << "  3. How to Play" << endl;
     cout << "  4. Quit" << endl;
     cout << endl;
 

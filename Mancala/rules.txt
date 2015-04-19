@@ -1,4 +1,4 @@
-Rules:
+How to Play:
 
 1. The Mancala board is made up of two rows of six holes each.
 2. Player one's row is on the bottom, and player two's is on the top.

@@ -1,13 +1,30 @@
 # depslib dependency file v1.0
-1429394566 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/main.cpp
+1429399603 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/main.cpp
 	<iostream>
 	<fstream>
 	<stdlib.h>
 	"Utilities.h"
+	"Game.h"
 
 1429394566 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Utilities.h
 
-1429394566 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
+1429394583 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
 	"Utilities.h"
 	<iostream>
+
+1429402670 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
+	"Board.h"
+	<iostream>
+
+1429402659 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
+	<string>
+
+1429402628 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
+	"Game.h"
+	"Board.h"
+	<stdlib.h>
+	<iostream>
+
+1429402899 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Game.h
+	<Board.h>
 
