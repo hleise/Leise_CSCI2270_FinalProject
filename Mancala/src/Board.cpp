@@ -80,7 +80,7 @@ bool Board::playerMove(int player, int index)
             p1Store++;
             return true;
         } else if ((index + j) % 12 < 6) {
-            if (p1Holes[((index + j) % 6) - ((index + j) / 12)] == 0) {
+            if ((p1Holes[((index + j) % 6) - ((index + j) / 12)] == 0) && (p2Holes[5 - (((index + j) % 6) - ((index + j) / 12))] != 0)) {
                 p1Store += (p2Holes[5 - (((index + j) % 6) - ((index + j) / 12))] + 1);
                 p2Holes[5 - (((index + j) % 6) - ((index + j) / 12))] = 0;
             } else {
@@ -114,7 +114,7 @@ bool Board::playerMove(int player, int index)
             p2Store++;
             return true;
         } else if ((index + j) % 12 < 6) {
-            if (p2Holes[((index + j) % 6) - ((index + j) / 12)] == 0) {
+            if ((p2Holes[((index + j) % 6) - ((index + j) / 12)] == 0) && (p1Holes[5 - (((index + j) % 6) - ((index + j) / 12))] != 0)) {
                 p2Store += (p1Holes[5 - (((index + j) % 6) - ((index + j) / 12))] + 1);
                 p1Holes[5 - (((index + j) % 6) - ((index + j) / 12))] = 0;
             } else {
@@ -142,6 +142,8 @@ void Board::collect()
     for (int i = 0; i < 6; i++) {
         p1Store += p1Holes[i];
         p2Store += p2Holes[i];
+        p1Holes[i] = 0;
+        p2Holes[i] = 0;
     }
 }
 

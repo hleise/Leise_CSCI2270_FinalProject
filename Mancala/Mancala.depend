@@ -11,7 +11,7 @@
 	<stdlib.h>
 	<fstream>
 
-1429422533 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
+1429423246 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
 	"Board.h"
 	"Game.h"
 	<iostream>
@@ -20,7 +20,7 @@
 1429421345 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
 	<string>
 
-1429421763 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
+1429423612 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
 	"Game.h"
 	"Board.h"
 	"Utilities.h"

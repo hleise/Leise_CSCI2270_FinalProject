@@ -153,7 +153,7 @@ void Game::player(int id)
                     exit(0);
                 }
 
-                if (again == true) {
+                if ((again == true) && (!board->gameOver())) {
                     Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
@@ -196,7 +196,7 @@ void Game::player(int id)
                     exit(0);
                 }
 
-                if (again == true) {
+                if ((again == true) && (!board->gameOver())) {
                     Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
