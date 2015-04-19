@@ -11,11 +11,12 @@ class Board
         virtual ~Board();
         void drawBoard();
         bool gameOver();
-        void playerMove(int player, string choice);
+        bool playerMove(int player, int index);
+        void collect();
         int getP1Store();
         int* getP1Holes();
         int getP2Store();
-        int* getp2Holes();
+        int* getP2Holes();
     protected:
     private:
         int p1Store;
