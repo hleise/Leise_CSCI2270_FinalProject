@@ -63,6 +63,8 @@ void Utilities::getMenuInput()
     } else if (input == "3") {
         printRules();
     } else if (input == "4") {
+        cout << endl;
+        cout << "Goodbye!" << endl;
         exit(0);
     } else {
         cout << "Not a valid command, try again!" << endl;

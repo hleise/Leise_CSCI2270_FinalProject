@@ -29,13 +29,17 @@ Game::~Game()
 
 void Game::solo()
 {
-
+    // drawBoard
+    // playerMove(1)
+    // if (!end)
+    //    drawBoard
+    //    AIMove
 }
 
 void Game::twoPlayer()
 {
     while (!board->gameOver()) {
-        Utilities::clearScreen();
+        //Utilities::clearScreen();
         board->drawBoard();
         player(playerID);
         playerID = setNextPlayer();
@@ -47,21 +51,21 @@ void Game::twoPlayer()
     board->drawBoard();
     cout << endl;
 
-    if (board->getP1Store() > board->getP2Store()) {
+    if (board->getStore(1) > board->getStore(2)) {
         cout << "Player 1 Won!!!" << endl;
         cout << "***************" << endl;
-        cout << "Player 1: " << board->getP1Store() << endl;
-        cout << "Player 2: " << board->getP2Store() << endl;
-    } else if (board->getP2Store() > board->getP1Store()) {
+        cout << "Player 1: " << board->getStore(1) << endl;
+        cout << "Player 2: " << board->getStore(2) << endl;
+    } else if (board->getStore(2) > board->getStore(1)) {
         cout << "Player 2 Won!!!" << endl;
         cout << "***************" << endl;
-        cout << "Player 1: " << board->getP1Store() << endl;
-        cout << "Player 2: " << board->getP2Store() << endl;
+        cout << "Player 1: " << board->getStore(1) << endl;
+        cout << "Player 2: " << board->getStore(2) << endl;
     } else {
         cout << "Tie Game!!!" << endl;
         cout << "***************" << endl;
-        cout << "Player 1: " << board->getP1Store() << endl;
-        cout << "Player 2: " << board->getP2Store() << endl;
+        cout << "Player 1: " << board->getStore(1) << endl;
+        cout << "Player 2: " << board->getStore(2) << endl;
     }
 
     // waits for user to press Enter
@@ -117,22 +121,22 @@ void Game::player(int id)
         Utilities::quitGame();
     } else if ((choice == "a") || (choice == "b") || (choice == "c") || (choice == "d") || (choice == "e") || (choice == "f")) {
         if (id == 1) {
-            if ((choice == "a") && (board->getP1Holes()[0] == 0)) {
+            if ((choice == "a") && (board->getHoles(1)[0] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "b") && (board->getP1Holes()[1] == 0)) {
+            } else if ((choice == "b") && (board->getHoles(1)[1] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "c") && (board->getP1Holes()[2] == 0)) {
+            } else if ((choice == "c") && (board->getHoles(1)[2] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "d") && (board->getP1Holes()[3] == 0)) {
+            } else if ((choice == "d") && (board->getHoles(1)[3] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "e") && (board->getP1Holes()[4] == 0)) {
+            } else if ((choice == "e") && (board->getHoles(1)[4] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "f") && (board->getP1Holes()[5] == 0)) {
+            } else if ((choice == "f") && (board->getHoles(1)[5] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
             } else {
@@ -154,28 +158,28 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    Utilities::clearScreen();
+                    //Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }
             }
         } else if (id == 2) {
-            if ((choice == "f") && (board->getP2Holes()[0] == 0)) {
+            if ((choice == "f") && (board->getHoles(2)[0] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "e") && (board->getP2Holes()[1] == 0)) {
+            } else if ((choice == "e") && (board->getHoles(2)[1] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "d") && (board->getP2Holes()[2] == 0)) {
+            } else if ((choice == "d") && (board->getHoles(2)[2] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "c") && (board->getP2Holes()[3] == 0)) {
+            } else if ((choice == "c") && (board->getHoles(2)[3] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "b") && (board->getP2Holes()[4] == 0)) {
+            } else if ((choice == "b") && (board->getHoles(2)[4] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
-            } else if ((choice == "a") && (board->getP2Holes()[5] == 0)) {
+            } else if ((choice == "a") && (board->getHoles(2)[5] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
                 player(id);
             } else {
@@ -197,7 +201,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    Utilities::clearScreen();
+                    //Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }

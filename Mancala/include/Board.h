@@ -13,16 +13,13 @@ class Board
         bool gameOver();
         bool playerMove(int player, int index);
         void collect();
-        int getP1Store();
-        int* getP1Holes();
-        int getP2Store();
-        int* getP2Holes();
+        int getOtherPlayer(int player);
+        int getStore(int id);
+        int* getHoles(int id);
     protected:
     private:
-        int p1Store;
-        int p2Store;
-        int p1Holes[6];
-        int p2Holes[6];
+        // 2D array holding holes and stores
+        int holes[3][6];
 };
 
 #endif // BOARD_H

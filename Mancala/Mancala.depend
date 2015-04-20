@@ -4,23 +4,23 @@
 
 1429409469 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Utilities.h
 
-1429409866 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
+1429486196 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
 	"Utilities.h"
 	"Game.h"
 	<iostream>
 	<stdlib.h>
 	<fstream>
 
-1429423246 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
+1429499825 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
 	"Board.h"
 	"Game.h"
 	<iostream>
 	<stdlib.h>
 
-1429421345 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
+1429481945 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
 	<string>
 
-1429423612 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
+1429499301 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
 	"Game.h"
 	"Board.h"
 	"Utilities.h"

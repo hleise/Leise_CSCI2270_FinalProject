@@ -5,13 +5,14 @@ How to Play:
 3. Player one's store in on the right, and player two's is on the left.
 4. To begin, 4 pieces are placed into each hole.
 5. Player one begins by picking up all pieces in any hole on their side.
-6. Moving counter-clockwise, the player deposits one piece in each hole until the pieces run out.
-7. If you run into your own store, deposit one piece in it. If you run into your opponent's store, skip it.
-8. If the last piece you drop is in your own store, you get an extra turn.
-9. If the last piece you drop is in an empty hole on your side, you capture that piece and any pieces in the hole directly opposite.
-9. Always place all captured pieces in your store.
-10. The game ends when all six holes on one side of the board are empty.
-11. The player who still has pieces on their side of the board when the game ends captures all of those pieces.
-12. The winner is the player with the most pieces in their store.
-13. Press 'm' during your turn to return to the menu.
-14. Press 'q' during your turn to quit the application.
+6. Moving counter-clockwise, deposit one piece in each hole until the pieces run out.
+7. If you run into your own store, deposit one piece in it. 
+8. If you run into your opponent's store, skip it.
+9. If the last piece you drop is in your own store, you get an extra turn.
+10. If the last piece you drop is in an empty hole on your side, you capture that piece and any pieces in the hole directly opposite.
+11. Always place all captured pieces in your store.
+12. The game ends when all six holes on one side of the board are empty.
+13. The player who still has pieces on their side of the board when the game ends captures all of those pieces.
+14. The winner is the player with the most pieces in their store.
+15. Press 'm' during your turn to return to the menu.
+16. Press 'q' during your turn to quit the application.

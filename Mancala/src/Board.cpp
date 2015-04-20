@@ -8,12 +8,14 @@ using namespace std;
 // initialize the game's starting values
 Board::Board()
 {
-    p1Store = 0;
-    p2Store = 0;
+    // sets stores to 0
+    holes[0][1] = 0;
+    holes[0][2] = 0;
 
+    // sets every hole to 4
     for (int i = 0; i < 6; i++) {
-        p1Holes[i] = 4;
-        p2Holes[i] = 4;
+        holes[1][i] = 4;
+        holes[2][i] = 4;
     }
 }
 
@@ -27,26 +29,26 @@ void Board::drawBoard()
 {
     cout << "     A   B   C   D   E   F" << endl;
     cout << endl;
-    cout << "   | " << p2Holes[5] << " | " << p2Holes[4] << " | " << p2Holes[3] << " | " << p2Holes[2] << " | " << p2Holes[1] << " | " << p2Holes[0] << " |     P2" << endl;
+    cout << "   | " << holes[2][5] << " | " << holes[2][4] << " | " << holes[2][3] << " | " << holes[2][2] << " | " << holes[2][1] << " | " << holes[2][0] << " |     P2" << endl;
 
     // prints depending on p2Store value so it lines up correctly
-    if (p2Store > 9) {
-        cout << p2Store;
+    if (holes[0][2] > 9) {
+        cout << holes[0][2];
     } else {
-        cout << " " << p2Store;
+        cout << " " << holes[0][2];
     }
 
-    cout << " ========================= " << p1Store << endl;
-    cout << "   | " << p1Holes[0] << " | " << p1Holes[1] << " | " << p1Holes[2] << " | " << p1Holes[3] << " | " << p1Holes[4] << " | " << p1Holes[5] << " |     P1" << endl;
+    cout << " ========================= " << holes[0][1] << endl;
+    cout << "   | " << holes[1][0] << " | " << holes[1][1] << " | " << holes[1][2] << " | " << holes[1][3] << " | " << holes[1][4] << " | " << holes[1][5] << " |     P1" << endl;
 }
 
 // check if a player's side is empty or not
 bool Board::gameOver()
 {
-    if ((p1Holes[0] == 0) && (p1Holes[1] == 0) && (p1Holes[2] == 0) && (p1Holes[3] == 0) && (p1Holes[4] == 0) && (p1Holes[5] == 0)) {
+    if ((holes[1][0] == 0) && (holes[1][1] == 0) && (holes[1][2] == 0) && (holes[1][3] == 0) && (holes[1][4] == 0) && (holes[1][5] == 0)) {
         return true;
     } else {
-        if ((p2Holes[0] == 0) && (p2Holes[1] == 0) && (p2Holes[2] == 0) && (p2Holes[3] == 0) && (p2Holes[4] == 0) && (p2Holes[5] == 0)) {
+        if ((holes[2][0] == 0) && (holes[2][1] == 0) && (holes[2][2] == 0) && (holes[2][3] == 0) && (holes[2][4] == 0) && (holes[2][5] == 0)) {
             return true;
         }
     }
@@ -55,79 +57,46 @@ bool Board::gameOver()
 }
 
 // Most of the game's logic
+// by having a 2D array I was able to split the line count in half
 bool Board::playerMove(int player, int index)
 {
-    int pieces = 0;
+    int pieces, trueCount;
     int j = 1;
+    int otherPlayer = getOtherPlayer(player);
 
-    if (player == 1) {
-        pieces = p1Holes[index];
-        p1Holes[index] = 0;
-        for (int i = pieces; i > 1; i--) {
-            if ((index + j) % 12 == 6) {
-                p1Store++;
-            } else if ((index + j) % 12 > 6) {
-                p2Holes[((index + j) % 7) + ((index + j) / 12)]++;
-            } else if ((index + j) % 12 < 6) {
-                p1Holes[((index + j) % 6) - ((index + j) / 12)]++;
-            } else {
-                cout << "Something went wrong" << endl;
-                exit(0);
-            }
-            j++;
-        }
-        if ((index + j) % 12 == 6) {
-            p1Store++;
-            return true;
-        } else if ((index + j) % 12 < 6) {
-            if ((p1Holes[((index + j) % 6) - ((index + j) / 12)] == 0) && (p2Holes[5 - (((index + j) % 6) - ((index + j) / 12))] != 0)) {
-                p1Store += (p2Holes[5 - (((index + j) % 6) - ((index + j) / 12))] + 1);
-                p2Holes[5 - (((index + j) % 6) - ((index + j) / 12))] = 0;
-            } else {
-                p1Holes[((index + j) % 6) - ((index + j) / 12)]++;
-            }
-        } else if ((index + j) % 12 > 6) {
-                p2Holes[((index + j) % 7) + ((index + j) / 12)]++;
+    pieces = holes[player][index];
+    holes[player][index] = 0;
+
+    // until all but one piece is gone
+    for (int i = pieces; i > 1; i--) {
+        trueCount = j % 13;
+        if ((trueCount + index) == 6) {
+            holes[0][player]++;
+        } else if ((trueCount + index) > 6) {
+            holes[otherPlayer][((trueCount + index) % 6) - 1]++;
+        } else if ((trueCount + index) < 6) {
+            holes[player][trueCount + index]++;
         } else {
             cout << "Something went wrong" << endl;
             exit(0);
         }
+        j++;
+    }
 
-        return false;
-    } else if (player == 2) {
-        pieces = p2Holes[index];
-        p2Holes[index] = 0;
-        for (int i = pieces; i > 1; i--) {
-            if ((index + j) % 12 == 6) {
-                p2Store++;
-            } else if ((index + j) % 12 > 6) {
-                p1Holes[((index + j) % 7) + ((index + j) / 12)]++;
-            } else if ((index + j) % 12 < 6) {
-                p2Holes[((index + j) % 6) - ((index + j) / 12)]++;
-            } else {
-                cout << "Something went wrong" << endl;
-                exit(0);
-            }
-            j++;
-        }
-        if ((index + j) % 12 == 6) {
-            p2Store++;
-            return true;
-        } else if ((index + j) % 12 < 6) {
-            if ((p2Holes[((index + j) % 6) - ((index + j) / 12)] == 0) && (p1Holes[5 - (((index + j) % 6) - ((index + j) / 12))] != 0)) {
-                p2Store += (p1Holes[5 - (((index + j) % 6) - ((index + j) / 12))] + 1);
-                p1Holes[5 - (((index + j) % 6) - ((index + j) / 12))] = 0;
-            } else {
-                p2Holes[((index + j) % 6) - ((index + j) / 12)]++;
-            }
-        } else if ((index + j) % 12 > 6) {
-                p1Holes[((index + j) % 7) + ((index + j) / 12)]++;
+    // last piece logic
+    trueCount = j % 13;
+    if ((trueCount + index) == 6) {
+        holes[0][player]++;
+        return true;
+    } else if ((trueCount + index) < 6) {
+        if ((holes[player][(trueCount + index)] == 0) && (holes[otherPlayer][5 - (trueCount + index)] != 0)) {
+            holes[0][player] += (holes[otherPlayer][5 - (trueCount + index)] + 1);
+            holes[otherPlayer][5 - (trueCount + index)] = 0;
         } else {
-            cout << "Something went wrong" << endl;
-            exit(0);
+            holes[player][trueCount + index]++;
         }
-
-        return false;
+    } else if ((trueCount + index) > 6) {
+            holes[otherPlayer][((trueCount + index) % 6) - 1]++;
     } else {
         cout << "Something went wrong" << endl;
         exit(0);
@@ -140,29 +109,31 @@ bool Board::playerMove(int player, int index)
 void Board::collect()
 {
     for (int i = 0; i < 6; i++) {
-        p1Store += p1Holes[i];
-        p2Store += p2Holes[i];
-        p1Holes[i] = 0;
-        p2Holes[i] = 0;
+        holes[0][1] += holes[1][i];
+        holes[0][2] += holes[2][i];
+        holes[1][i] = 0;
+        holes[2][i] = 0;
     }
 }
 
-int Board::getP1Store()
+int Board::getOtherPlayer(int player)
 {
-    return p1Store;
+    if (player == 1) {
+        return 2;
+    } else if (player == 2) {
+        return 1;
+    } else {
+        cout << "Something went wrong" << endl;
+        exit(0);
+    }
 }
 
-int* Board::getP1Holes()
+int Board::getStore(int id)
 {
-    return p1Holes;
+    return holes[0][id];
 }
 
-int Board::getP2Store()
+int* Board::getHoles(int id)
 {
-    return p2Store;
-}
-
-int* Board::getP2Holes()
-{
-    return p2Holes;
+    return holes[id];
 }
