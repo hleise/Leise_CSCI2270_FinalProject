@@ -110,7 +110,7 @@ void Game::twoPlayer()
 {
     // alternates between player one and player two until game is over
     while (!board->gameOver()) {
-        //Utilities::clearScreen();
+        Utilities::clearScreen();
         board->drawBoard();
         player(playerID);
         playerID = setNextPlayer();
@@ -271,7 +271,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    //Utilities::clearScreen();
+                    Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }
@@ -314,7 +314,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    //Utilities::clearScreen();
+                    Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }
