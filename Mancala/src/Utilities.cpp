@@ -32,6 +32,7 @@ void Utilities::clearScreen()
 *   printRules();
 *
 * Preconditions: None
+* Postconditions: None
 **********************************************************************/
 void Utilities::printRules()
 {

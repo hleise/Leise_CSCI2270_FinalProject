@@ -52,7 +52,7 @@ void getMenuInput()
 * Function Prototype: void menu()
 *
 * Function Description: Prints out the menu and calls getMenuInput()
-* to decide what to do with the users input. Designed to make it easy
+* to decide what to do with the user's input. Designed to make it easy
 * to loop through the game.
 *
 * Example:

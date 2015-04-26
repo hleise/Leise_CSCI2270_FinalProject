@@ -36,10 +36,12 @@
 		</Compiler>
 		<Unit filename="include/Board.h" />
 		<Unit filename="include/Game.h" />
+		<Unit filename="include/GameTree.h" />
 		<Unit filename="include/Utilities.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Board.cpp" />
 		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/GameTree.cpp" />
 		<Unit filename="src/Utilities.cpp" />
 		<Extensions>
 			<code_completion />

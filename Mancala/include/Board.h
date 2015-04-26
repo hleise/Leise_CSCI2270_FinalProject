@@ -10,9 +10,9 @@ class Board
         Board();
         virtual ~Board();
         void drawBoard();
+        void collect();
         bool gameOver();
         bool playerMove(int player, int index);
-        void collect();
         int getOtherPlayer(int player);
         int getStore(int id);
         int* getHoles(int id);

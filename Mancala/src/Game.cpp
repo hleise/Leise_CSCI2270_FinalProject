@@ -11,18 +11,24 @@ using namespace std;
 * Function Prototype: Game::Game(int numPlayers)
 *
 * Function Description: Creates a new Mancala game by creating a new
-* board and calling the appropriate
+* board and calling the appropriate gameType (single or two player).
 *
 * Example:
 *   Game(1);
 *
 * Preconditions: None
+* Postconditions: Game started (solo() or twoPlayer() called)
 **********************************************************************/
 Game::Game(int numPlayers)
 {
+    // set variables
     playerID = 1;
+    toMenu = false;
+
+    // create new board
     board = new Board();
 
+    // what game to run based on numPlayers
     if (numPlayers == 1) {
         this->solo();
     } else if (numPlayers == 2) {
@@ -33,41 +39,111 @@ Game::Game(int numPlayers)
     }
 }
 
+/*********************************************************************
+* Function Prototype: Game::~Game()
+*
+* Function Description: Destructor that deletes the board instance
+* in order to avoid a memory leak.
+*
+* Example:
+*   ~Game();
+*
+* Preconditions: Game object must exist
+* Postconditions: board deleted
+**********************************************************************/
 Game::~Game()
 {
     delete board;
 }
 
+/*********************************************************************
+* Function Prototype: void Game::solo()
+*
+* Function Description: Loops through the single player game until
+* it's over. Alternates turns between user and AI.
+*
+* Example:
+*   solo();
+*
+* Preconditions: Board and Game object must exist
+* Postconditions: Returns to main menu
+**********************************************************************/
 void Game::solo()
 {
+    // alternates between user and AI until game is over
     while (!board->gameOver()) {
+        // User
         Utilities::clearScreen();
         board->drawBoard();
         player(0);
 
+        //  checks if user wants to go to menu
+        if (toMenu == true)
+            return;
+
+        // AI
         if (!board->gameOver()) {
             Utilities::clearScreen();
             board->drawBoard();
 
         }
     }
+
+    // collects pieces and prints winner
+    board->collect();
+    printWinner();
 }
 
+/*********************************************************************
+* Function Prototype: void Game::twoPlayer()
+*
+* Function Description: Loops through the two player game until
+* it's over. Alternates turns between player one and player two.
+*
+* Example:
+*   twoPlayer();
+*
+* Preconditions: Board and Game object must exist
+* Postconditions: Returns to main menu
+**********************************************************************/
 void Game::twoPlayer()
 {
+    // alternates between player one and player two until game is over
     while (!board->gameOver()) {
-        Utilities::clearScreen();
+        //Utilities::clearScreen();
         board->drawBoard();
         player(playerID);
         playerID = setNextPlayer();
+
+        // checks if user wants to go to menu
+        if (toMenu == true)
+            return;
     }
 
+    // collects pieces and prints winner
     board->collect();
+    printWinner();
+}
 
+/*********************************************************************
+* Function Prototype: void Game::printWinner()
+*
+* Function Description: Calculates the winner and prints the final
+* score to the screen. When user presses Enter, it returns to the menu.
+*
+* Example:
+*   printWinner();
+*
+* Preconditions: Board and Game object must exist
+* Postconditions: Returns to main menu
+**********************************************************************/
+void Game::printWinner()
+{
     Utilities::clearScreen();
     board->drawBoard();
     cout << endl;
 
+    // calculates the winner and prints the final score
     if (board->getStore(1) > board->getStore(2)) {
         cout << "Player 1 Won!!!" << endl;
         cout << "***************" << endl;
@@ -93,16 +169,41 @@ void Game::twoPlayer()
     getline(cin, input);
 }
 
-// set playerID to the next player
+/*********************************************************************
+* Function Prototype: void Game::setNextPlayer()
+*
+* Function Description: Set variable playerID to the next player in
+* order to be able to alternate turns between the two.
+*
+* Example:
+*   setNextPlayer();
+*
+* Preconditions: Board and Game object must exist
+* Postconditions: playerID changes to the next player
+**********************************************************************/
 int Game::setNextPlayer()
 {
     if (playerID == 1) {
         return 2;
     } else if (playerID == 2) {
         return 1;
+    } else {
+        cout << "Something went wrong" << endl;
     }
 }
 
+/*********************************************************************
+* Function Prototype: void Game::player(int id)
+*
+* Function Description: Gets user move and calls playerMove() if it's
+* a valid choice.
+*
+* Example:
+*   player(1);
+*
+* Preconditions: Board and Game object must exist
+* Postconditions: Calls playerMove()
+**********************************************************************/
 void Game::player(int id)
 {
     string choice;
@@ -129,6 +230,7 @@ void Game::player(int id)
         cout << "Goodbye!" << endl;
         exit(0);
     } else if (choice == "m") {
+        toMenu = true;
         return;
     } else if ((choice == "a") || (choice == "b") || (choice == "c") || (choice == "d") || (choice == "e") || (choice == "f")) {
         if (id == 1) {
@@ -169,7 +271,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    Utilities::clearScreen();
+                    //Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }
@@ -212,7 +314,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    Utilities::clearScreen();
+                    //Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }

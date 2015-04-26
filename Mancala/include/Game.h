@@ -11,11 +11,13 @@ class Game
         void player(int playerID);
     protected:
     private:
-        int playerID;
         Board *board;
+        int playerID;
         int setNextPlayer();
+        bool toMenu;
         void solo();
         void twoPlayer();
+        void printWinner();
 };
 
 #endif // GAME_H
