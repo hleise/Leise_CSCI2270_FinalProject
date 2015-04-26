@@ -1,17 +1,18 @@
 # depslib dependency file v1.0
-1429409602 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/main.cpp
-	"Utilities.h"
-
-1429409469 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Utilities.h
-
-1429486196 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
+1430029683 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/main.cpp
 	"Utilities.h"
 	"Game.h"
 	<iostream>
 	<stdlib.h>
+
+1430029136 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Utilities.h
+
+1430029253 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
+	"Utilities.h"
+	<iostream>
 	<fstream>
 
-1429499825 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
+1430023303 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
 	"Board.h"
 	"Game.h"
 	<iostream>
@@ -20,7 +21,7 @@
 1429481945 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
 	<string>
 
-1429499301 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
+1430029220 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
 	"Game.h"
 	"Board.h"
 	"Utilities.h"
@@ -28,6 +29,11 @@
 	<iostream>
 	<algorithm>
 
-1429402899 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Game.h
-	<Board.h>
+1430026552 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Game.h
+	"Board.h"
+
+1430022416 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/GameTree.cpp
+	"GameTree.h"
+
+1430022416 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/GameTree.h
 

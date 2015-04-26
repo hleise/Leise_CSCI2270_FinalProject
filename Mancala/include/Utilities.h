@@ -8,9 +8,6 @@ class Utilities
         Utilities();
         virtual ~Utilities();
         static void clearScreen();
-        static void quitGame();
-        static void menu();
-        static void getMenuInput();
         static void printRules();
     protected:
     private:

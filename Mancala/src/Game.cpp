@@ -7,6 +7,17 @@
 
 using namespace std;
 
+/*********************************************************************
+* Function Prototype: Game::Game(int numPlayers)
+*
+* Function Description: Creates a new Mancala game by creating a new
+* board and calling the appropriate
+*
+* Example:
+*   Game(1);
+*
+* Preconditions: None
+**********************************************************************/
 Game::Game(int numPlayers)
 {
     playerID = 1;
@@ -29,17 +40,23 @@ Game::~Game()
 
 void Game::solo()
 {
-    // drawBoard
-    // playerMove(1)
-    // if (!end)
-    //    drawBoard
-    //    AIMove
+    while (!board->gameOver()) {
+        Utilities::clearScreen();
+        board->drawBoard();
+        player(0);
+
+        if (!board->gameOver()) {
+            Utilities::clearScreen();
+            board->drawBoard();
+
+        }
+    }
 }
 
 void Game::twoPlayer()
 {
     while (!board->gameOver()) {
-        //Utilities::clearScreen();
+        Utilities::clearScreen();
         board->drawBoard();
         player(playerID);
         playerID = setNextPlayer();
@@ -74,12 +91,6 @@ void Game::twoPlayer()
     string input;
     cin.clear();
     getline(cin, input);
-
-    // clears screen
-    Utilities::clearScreen();
-
-    // return to menu
-    Utilities::menu();
 }
 
 // set playerID to the next player
@@ -118,7 +129,7 @@ void Game::player(int id)
         cout << "Goodbye!" << endl;
         exit(0);
     } else if (choice == "m") {
-        Utilities::quitGame();
+        return;
     } else if ((choice == "a") || (choice == "b") || (choice == "c") || (choice == "d") || (choice == "e") || (choice == "f")) {
         if (id == 1) {
             if ((choice == "a") && (board->getHoles(1)[0] == 0)) {
@@ -158,7 +169,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    //Utilities::clearScreen();
+                    Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }
@@ -201,7 +212,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    //Utilities::clearScreen();
+                    Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }

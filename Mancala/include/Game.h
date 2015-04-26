@@ -1,6 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
-#include <Board.h>
+#include "Board.h"
 
 
 class Game

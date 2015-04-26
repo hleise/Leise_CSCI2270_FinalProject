@@ -2,7 +2,7 @@ How to Play:
 
 1. The Mancala board is made up of two rows of six holes each.
 2. Player one's row is on the bottom, and player two's is on the top.
-3. Player one's store in on the right, and player two's is on the left.
+3. Player one's store is on the right, and player two's is on the left.
 4. To begin, 4 pieces are placed into each hole.
 5. Player one begins by picking up all pieces in any hole on their side.
 6. Moving counter-clockwise, deposit one piece in each hole until the pieces run out.
