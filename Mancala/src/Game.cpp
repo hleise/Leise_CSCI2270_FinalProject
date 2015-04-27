@@ -75,7 +75,7 @@ void Game::solo()
     // alternates between user and AI until game is over
     while (!board->gameOver()) {
         // User
-        //Utilities::clearScreen();
+        Utilities::clearScreen();
         board->drawBoard();
         player(1);
 
@@ -85,7 +85,7 @@ void Game::solo()
 
         // AI
         if (!board->gameOver()) {
-            //Utilities::clearScreen();
+            Utilities::clearScreen();
             board->drawBoard();
             AI();
         }
@@ -141,7 +141,7 @@ void Game::twoPlayer()
 **********************************************************************/
 void Game::printWinner()
 {
-    //Utilities::clearScreen();
+    Utilities::clearScreen();
     board->drawBoard();
     cout << endl;
 
@@ -273,7 +273,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    //Utilities::clearScreen();
+                    Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }
@@ -347,7 +347,7 @@ void Game::AI()
     again = board->playerMove(2, choice);
 
     if ((again == true) && (!board->gameOver())) {
-        //Utilities::clearScreen();
+        Utilities::clearScreen();
         board->drawBoard();
         AI();
     }

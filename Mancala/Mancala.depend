@@ -22,7 +22,7 @@
 1430111659 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
 	<string>
 
-1430111859 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
+1430112742 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
 	"Game.h"
 	"Board.h"
 	"GameTree.h"
@@ -35,7 +35,7 @@
 1430088436 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Game.h
 	"Board.h"
 
-1430111891 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/GameTree.cpp
+1430113349 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/GameTree.cpp
 	"GameTree.h"
 	"Board.h"
 	"Utilities.h"
