@@ -5,34 +5,44 @@
 	<iostream>
 	<stdlib.h>
 
-1430029136 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Utilities.h
+1430106054 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Utilities.h
 
-1430080660 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
+1430106081 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Utilities.cpp
 	"Utilities.h"
-	<iostream>
-
-1430038840 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
-	"Board.h"
-	"Game.h"
 	<iostream>
 	<stdlib.h>
 
-1430033732 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
+1430111659 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Board.cpp
+	"Board.h"
+	"Game.h"
+	"Utilities.h"
+	<iostream>
+	<stdlib.h>
+
+1430111659 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Board.h
 	<string>
 
-1430040937 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
+1430111859 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/Game.cpp
 	"Game.h"
 	"Board.h"
+	"GameTree.h"
 	"Utilities.h"
 	<stdlib.h>
 	<iostream>
 	<algorithm>
+	<unistd.h>
 
-1430033732 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Game.h
+1430088436 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/Game.h
 	"Board.h"
 
-1430022416 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/GameTree.cpp
+1430111891 source:/home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/src/GameTree.cpp
 	"GameTree.h"
+	"Board.h"
+	"Utilities.h"
+	<iostream>
+	<stdlib.h>
+	<climits>
 
-1430022416 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/GameTree.h
+1430111872 /home/user/Dropbox/CSCI 2270/Assignments/Leise_CSCI2270_FinalProject/Mancala/include/GameTree.h
+	"Board.h"
 

@@ -1,9 +1,11 @@
 #include "Game.h"
 #include "Board.h"
+#include "GameTree.h"
 #include "Utilities.h"
 #include <stdlib.h>
 #include <iostream>
 #include <algorithm>
+#include <unistd.h>
 
 using namespace std;
 
@@ -73,9 +75,9 @@ void Game::solo()
     // alternates between user and AI until game is over
     while (!board->gameOver()) {
         // User
-        Utilities::clearScreen();
+        //Utilities::clearScreen();
         board->drawBoard();
-        player(0);
+        player(1);
 
         //  checks if user wants to go to menu
         if (toMenu == true)
@@ -83,9 +85,9 @@ void Game::solo()
 
         // AI
         if (!board->gameOver()) {
-            Utilities::clearScreen();
+            //Utilities::clearScreen();
             board->drawBoard();
-
+            AI();
         }
     }
 
@@ -139,7 +141,7 @@ void Game::twoPlayer()
 **********************************************************************/
 void Game::printWinner()
 {
-    Utilities::clearScreen();
+    //Utilities::clearScreen();
     board->drawBoard();
     cout << endl;
 
@@ -271,7 +273,7 @@ void Game::player(int id)
                 }
 
                 if ((again == true) && (!board->gameOver())) {
-                    Utilities::clearScreen();
+                    //Utilities::clearScreen();
                     board->drawBoard();
                     player(id);
                 }
@@ -327,4 +329,28 @@ void Game::player(int id)
         cout << "Choices are A, B, C, D, E, or F, try again!" << endl;
         player(id);
     }
+}
+
+void Game::AI()
+{
+    cout << "Thinking..." << endl;
+
+    // pause for a few seconds so the player can see what the AI does
+    sleep(2);
+
+    int choice;
+    bool again;
+
+    GameTree *gameTree = new GameTree();
+    choice = gameTree->getMove(board);
+
+    again = board->playerMove(2, choice);
+
+    if ((again == true) && (!board->gameOver())) {
+        //Utilities::clearScreen();
+        board->drawBoard();
+        AI();
+    }
+
+    delete gameTree;
 }

@@ -9,6 +9,7 @@ class Game
         Game(int numPlayers);
         virtual ~Game();
         void player(int playerID);
+        void AI();
     protected:
     private:
         Board *board;

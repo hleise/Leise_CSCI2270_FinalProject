@@ -1,5 +1,6 @@
 #include "Board.h"
 #include "Game.h"
+#include "Utilities.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -19,6 +20,11 @@ using namespace std;
 **********************************************************************/
 Board::Board()
 {
+    // makes holes a 2D-array
+    holes[0] = new int[3];
+    holes[1] = new int[6];
+    holes[2] = new int[6];
+
     // sets stores to 0
     holes[0][1] = 0;
     holes[0][2] = 0;
@@ -27,6 +33,24 @@ Board::Board()
     for (int i = 0; i < 6; i++) {
         holes[1][i] = 4;
         holes[2][i] = 4;
+    }
+}
+
+Board::Board(Board *board)
+{
+    // makes holes a 2D-array
+    holes[0] = new int[3];
+    holes[1] = new int[6];
+    holes[2] = new int[6];
+
+    // sets stores to board stores
+    holes[0][1] = board->getStore(1);
+    holes[0][2] = board->getStore(2);
+
+    // sets holes to board holes
+    for (int i = 0; i < 6; i++) {
+        holes[1][i] = board->getHoles(1)[i];
+        holes[2][i] = board->getHoles(2)[i];
     }
 }
 
@@ -110,7 +134,7 @@ bool Board::playerMove(int player, int index)
 {
     int pieces, trueCount, totalCount;
     int j = 1;
-    int otherPlayer = getOtherPlayer(player);
+    int otherPlayer = Utilities::getOtherPlayer(player);
 
     pieces = holes[player][index];
     holes[player][index] = 0;
@@ -178,28 +202,6 @@ void Board::collect()
     }
 }
 
-/*********************************************************************
-* Function Prototype: int Board::getOtherPlayer(int player);
-*
-* Function Description: Returns the other player's ID number
-*
-* Example:
-*   int otherID = getOtherPlayer(1);
-*
-* Preconditions: player should be 1 or 2
-* Postconditions: Returns other player's ID number
-**********************************************************************/
-int Board::getOtherPlayer(int player)
-{
-    if (player == 1) {
-        return 2;
-    } else if (player == 2) {
-        return 1;
-    } else {
-        cout << "Something went wrong" << endl;
-        exit(0);
-    }
-}
 
 /*********************************************************************
 * Function Prototype: int Board::getStore(int id);
@@ -217,6 +219,7 @@ int Board::getStore(int id)
     return holes[0][id];
 }
 
+
 /*********************************************************************
 * Function Prototype: int Board::getHoles();
 *
@@ -231,4 +234,9 @@ int Board::getStore(int id)
 int* Board::getHoles(int id)
 {
     return holes[id];
+}
+
+int Board::getUtility()
+{
+    return (holes[0][2] - holes[0][1]) / 2;
 }

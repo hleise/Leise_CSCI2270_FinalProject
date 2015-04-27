@@ -9,6 +9,7 @@ class Utilities
         virtual ~Utilities();
         static void clearScreen();
         static void printRules();
+        static int getOtherPlayer(int player);
     protected:
     private:
 };
