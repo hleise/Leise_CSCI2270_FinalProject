@@ -36,6 +36,19 @@ Board::Board()
     }
 }
 
+/*********************************************************************
+* Function Prototype: Board::Board(Board *board);
+*
+* Function Description: Creates a new Board object with the same
+* values as the passed Board object.
+*
+* Example:
+*   Board *board = new Board(oldBoard);
+*
+* Preconditions: Must have created another board object that you pass in.
+* Postconditions: New board created with the same values as the passed
+* Board object.
+**********************************************************************/
 Board::Board(Board *board)
 {
     // makes holes a 2D-array
@@ -54,20 +67,29 @@ Board::Board(Board *board)
     }
 }
 
-// Just chillin right now
+/*********************************************************************
+* Function Prototype: Board::~Board();
+*
+* Function Description: Destructor for Board that does nothing.
+*
+* Example:
+*   delete board;
+*
+* Preconditions: Board object must exist.
+* Postconditions: Board object deleted.
+**********************************************************************/
 Board::~Board()
 {
     //dtor
 }
 
-
 /*********************************************************************
 * Function Prototype: void Board::drawBoard();
 *
-* Function Description: Prints the board with the current game values
+* Function Description: Prints the board with the current game values.
 *
 * Example:
-*   drawBoard();
+*   board->drawBoard();
 *
 * Preconditions: Game values must be defined (holes[][])
 * Postconditions: Board printed to the screen.
@@ -89,7 +111,6 @@ void Board::drawBoard()
     cout << "   | " << holes[1][0] << " | " << holes[1][1] << " | " << holes[1][2] << " | " << holes[1][3] << " | " << holes[1][4] << " | " << holes[1][5] << " |     P1" << endl;
 }
 
-
 /*********************************************************************
 * Function Prototype: bool Board::gameOver();
 *
@@ -97,9 +118,9 @@ void Board::drawBoard()
 * on their side.
 *
 * Example:
-*   while (!gameOver())
+*   while (!board->gameOver())
 *         or
-*   bool gameOver = gameOver();
+*   bool gameOver = board->gameOver();
 *
 * Preconditions: Game values must be defined (holes[][])
 * Postconditions: Returns boolean of whether the game is over or not
@@ -117,25 +138,27 @@ bool Board::gameOver()
     return false;
 }
 
-
 /*********************************************************************
 * Function Prototype: bool Board::playerMove(int player, int index);
 *
 * Function Description: Responsible for most of the game's logic.
-* Updates values of the board based on the user's move.
+* Updates values of the board based on the user's move. By making
+* holes a 2D-array, I was able to cut the logic in half.
 *
 * Example:
-*   playerMove(1, 4);
+*   bool again = board->playerMove(1, 4);
+*        or
+*   board->playerMove(2, 3);
 *
 * Preconditions: player must be 1 or 2, and index must be 0-5
 * Postconditions: Returns boolean of whether the user gets another turn.
 **********************************************************************/
 bool Board::playerMove(int player, int index)
 {
+    // set up variables
     int pieces, trueCount, totalCount;
     int j = 1;
     int otherPlayer = Utilities::getOtherPlayer(player);
-
     pieces = holes[player][index];
     holes[player][index] = 0;
 
@@ -179,7 +202,6 @@ bool Board::playerMove(int player, int index)
     return false;
 }
 
-
 /*********************************************************************
 * Function Prototype: void Board::collect();
 *
@@ -187,7 +209,7 @@ bool Board::playerMove(int player, int index)
 * and puts them in the correct store.
 *
 * Example:
-*   collect();
+*   board->collect();
 *
 * Preconditions: Should be called when the game is over
 * Postconditions: Holes are empty and store values updated
@@ -202,31 +224,29 @@ void Board::collect()
     }
 }
 
-
 /*********************************************************************
 * Function Prototype: int Board::getStore(int id);
 *
-* Function Description: Returns the given player's store total
+* Function Description: Returns the queried player's store total.
 *
 * Example:
-*   int totalScore = getStore(1);
+*   int totalScore = board->getStore(1);
 *
-* Preconditions: Store value should be defined
-* Postconditions: Returns the queried player's store total
+* Preconditions: Store value should be defined and id should be 1 or 2.
+* Postconditions: Returns the queried player's store total.
 **********************************************************************/
 int Board::getStore(int id)
 {
     return holes[0][id];
 }
 
-
 /*********************************************************************
-* Function Prototype: int Board::getHoles();
+* Function Prototype: int Board::getHoles(int id);
 *
 * Function Description: Returns queried player's hole array
 *
 * Example:
-*   int holes[6] = getHoles(1);
+*   int holes[6] = board->getHoles(1);
 *
 * Preconditions: id should be 1 or 2
 * Postconditions: Returns queried player's hole array
@@ -236,6 +256,21 @@ int* Board::getHoles(int id)
     return holes[id];
 }
 
+/*********************************************************************
+* Function Prototype: int Board::getUtility();
+*
+* Function Description: Returns a move's utility for the AI (Player 2)
+* by subtracting player one's store from player two's and dividing that
+* by two. By dividing by two, it makes the utility a less dominating
+* factor in deciding moves and allows things like a second turn to
+* have more influence.
+*
+* Example:
+*   int utility = board->getUtility();
+*
+* Preconditions: None
+* Postconditions: New board created with starting game values.
+**********************************************************************/
 int Board::getUtility()
 {
     return (holes[0][2] - holes[0][1]) / 2;

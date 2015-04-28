@@ -20,7 +20,6 @@ void Utilities::clearScreen()
     cout << "\033[2J\033[;H";
 }
 
-
 /*********************************************************************
 * Function Prototype: static void Utilities::printRules()
 *
@@ -52,13 +51,14 @@ void Utilities::printRules()
     cout << "7. If you run into your own store, deposit one piece in it" << endl;
     cout << "8. If you run into your opponent's store, skip it" << endl;
     cout << "9. If the last piece you drop is in your own store, you get an extra turn" <<  endl;
-    cout << "10. If the last piece you drop is in an empty hole on your side, you capture that piece and any pieces in the hole directly opposite" << endl;
+    cout << "10. If the last piece you drop is in an empty hole on your side and there are pieces in the hole directly opposite, you capture that and all opposite pieces" << endl;
     cout << "11. Always place all captured pieces in your store" << endl;
     cout << "12. The game ends when all six holes on one side of the board are empty" << endl;
     cout << "13. The player who still has pieces on their side of the board when the game ends captures all of those pieces" << endl;
     cout << "14. The winner is the player with the most pieces in their store" << endl;
     cout << "15. Press 'm' during your turn to return to the menu" << endl;
     cout << "16. Press 'q' during your turn to quit the application" << endl;
+    cout << "17. Scroll up during your turn to see the previous turn" << endl;
 
     // waits for user to press Enter
     cout << endl;
@@ -67,7 +67,6 @@ void Utilities::printRules()
     cin.clear();
     getline(cin, input);
 }
-
 
 /*********************************************************************
 * Function Prototype: int Board::getOtherPlayer(int player);

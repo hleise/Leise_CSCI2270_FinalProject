@@ -18,7 +18,7 @@ using namespace std;
 * Example:
 *   Game(1);
 *
-* Preconditions: None
+* Preconditions: numPlayers should be 1 or 2
 * Postconditions: Game started (solo() or twoPlayer() called)
 **********************************************************************/
 Game::Game(int numPlayers)
@@ -48,7 +48,7 @@ Game::Game(int numPlayers)
 * in order to avoid a memory leak.
 *
 * Example:
-*   ~Game();
+*   delete game;
 *
 * Preconditions: Game object must exist
 * Postconditions: board deleted
@@ -65,7 +65,7 @@ Game::~Game()
 * it's over. Alternates turns between user and AI.
 *
 * Example:
-*   solo();
+*   game->solo();
 *
 * Preconditions: Board and Game object must exist
 * Postconditions: Returns to main menu
@@ -103,7 +103,7 @@ void Game::solo()
 * it's over. Alternates turns between player one and player two.
 *
 * Example:
-*   twoPlayer();
+*   game->twoPlayer();
 *
 * Preconditions: Board and Game object must exist
 * Postconditions: Returns to main menu
@@ -134,13 +134,15 @@ void Game::twoPlayer()
 * score to the screen. When user presses Enter, it returns to the menu.
 *
 * Example:
-*   printWinner();
+*   game->printWinner();
 *
-* Preconditions: Board and Game object must exist
+* Preconditions: Board and Game object must exist. Should only be
+* called after the game is over.
 * Postconditions: Returns to main menu
 **********************************************************************/
 void Game::printWinner()
 {
+    // clears the screen and prints the final game board
     Utilities::clearScreen();
     board->drawBoard();
     cout << endl;
@@ -163,7 +165,7 @@ void Game::printWinner()
         cout << "Player 2: " << board->getStore(2) << endl;
     }
 
-    // waits for user to press Enter
+    // waits for user to press Enter to return to menu
     cout << endl;
     cout << "Press Enter to return to the menu" << endl;
     string input;
@@ -174,14 +176,14 @@ void Game::printWinner()
 /*********************************************************************
 * Function Prototype: void Game::setNextPlayer()
 *
-* Function Description: Set variable playerID to the next player in
+* Function Description: Returns the next playerID in
 * order to be able to alternate turns between the two.
 *
 * Example:
-*   setNextPlayer();
+*   int nextPlayer = game->setNextPlayer();
 *
-* Preconditions: Board and Game object must exist
-* Postconditions: playerID changes to the next player
+* Preconditions: Game object must exist
+* Postconditions: Returns other playerID
 **********************************************************************/
 int Game::setNextPlayer()
 {
@@ -201,10 +203,10 @@ int Game::setNextPlayer()
 * a valid choice.
 *
 * Example:
-*   player(1);
+*   game->player(1);
 *
-* Preconditions: Board and Game object must exist
-* Postconditions: Calls playerMove()
+* Preconditions: Board and Game object must exist. ID must be 1 or 2.
+* Postconditions: Calls playerMove().
 **********************************************************************/
 void Game::player(int id)
 {
@@ -227,7 +229,7 @@ void Game::player(int id)
     getline(cin, choice);
     transform(choice.begin(), choice.end(), choice.begin(), ::tolower);
 
-    // logic on their choice
+    // logic on their choice and checking if it's valid
     if (choice == "q") {
         cout << "Goodbye!" << endl;
         exit(0);
@@ -235,6 +237,7 @@ void Game::player(int id)
         toMenu = true;
         return;
     } else if ((choice == "a") || (choice == "b") || (choice == "c") || (choice == "d") || (choice == "e") || (choice == "f")) {
+        // player 1
         if (id == 1) {
             if ((choice == "a") && (board->getHoles(1)[0] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
@@ -278,6 +281,7 @@ void Game::player(int id)
                     player(id);
                 }
             }
+        // player 2
         } else if (id == 2) {
             if ((choice == "f") && (board->getHoles(2)[0] == 0)) {
                 cout << "That hole's empty, try again!" << endl;
@@ -331,6 +335,18 @@ void Game::player(int id)
     }
 }
 
+/*********************************************************************
+* Function Prototype: void Game::AI();
+*
+* Function Description: Controls the AI's turn by calling the functions
+* to select a move and by calculating whether it gets to go again.
+*
+* Example:
+*   game->AI();
+*
+* Preconditions: Board and Game object must exist
+* Postconditions: AI moves
+**********************************************************************/
 void Game::AI()
 {
     cout << "Thinking..." << endl;
@@ -341,16 +357,18 @@ void Game::AI()
     int choice;
     bool again;
 
+    // create a new GameTree and calculate move
     GameTree *gameTree = new GameTree();
     choice = gameTree->getMove(board);
-
     again = board->playerMove(2, choice);
 
+    // re-call AI if it gets another turn
     if ((again == true) && (!board->gameOver())) {
         Utilities::clearScreen();
         board->drawBoard();
         AI();
     }
 
+    // delete gameTree to avoid a memory leak
     delete gameTree;
 }

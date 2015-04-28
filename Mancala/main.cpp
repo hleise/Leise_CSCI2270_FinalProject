@@ -6,6 +6,12 @@
 using namespace std;
 
 /*********************************************************************
+* This is technically the driver file. Given the amount of code,
+* it was better to compartmentalize it more into several classes
+* instead of having everything be run from here.
+**********************************************************************/
+
+/*********************************************************************
 * Function Prototype: void getMenuInput()
 *
 * Function Description: Gets user input for the menu and calls the
@@ -47,7 +53,6 @@ void getMenuInput()
     }
 }
 
-
 /*********************************************************************
 * Function Prototype: void menu()
 *
@@ -63,8 +68,10 @@ void getMenuInput()
 **********************************************************************/
 void menu()
 {
+    // clears screen
     Utilities::clearScreen();
 
+    // prints menu
     cout << "******************************" << endl;
     cout << "  WELCOME TO MANCALA MASTER!  " << endl;
     cout << "******************************" << endl;
@@ -75,9 +82,9 @@ void menu()
     cout << "  4. Quit" << endl;
     cout << endl;
 
+    // calls getMenuInput()
     getMenuInput();
 }
-
 
 /*********************************************************************
 * Function Prototype: int main()
