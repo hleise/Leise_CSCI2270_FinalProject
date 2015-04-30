@@ -97,9 +97,15 @@ Board::~Board()
 void Board::drawBoard()
 {
     cout << "     A   B   C   D   E   F" << endl;
-    cout << endl;
-    cout << "   | " << holes[2][5] << " | " << holes[2][4] << " | " << holes[2][3] << " | " << holes[2][2] << " | " << holes[2][1] << " | " << holes[2][0] << " |     P2" << endl;
-
+    cout << endl << "  ";
+    for(int i=5;i>=0;i--){
+		if(holes[2][i]<=){
+			cout << " | " << holes[2][i];
+		}else{
+			cout << " |" << holes[2][i];
+		}
+	}
+    cout << " |     P2" << endl;
     // prints depending on p2Store value so it lines up correctly
     if (holes[0][2] > 9) {
         cout << holes[0][2];
@@ -107,8 +113,15 @@ void Board::drawBoard()
         cout << " " << holes[0][2];
     }
 
-    cout << " ========================= " << holes[0][1] << endl;
-    cout << "   | " << holes[1][0] << " | " << holes[1][1] << " | " << holes[1][2] << " | " << holes[1][3] << " | " << holes[1][4] << " | " << holes[1][5] << " |     P1" << endl;
+    cout << " =========================== " << holes[0][1] << endl << "  ";
+    for(int i=0;i<6;i++){
+		if(holes[1][i]<=9){
+			cout << " | " << holes[1][i];
+		}else{
+			cout << " |" << holes[1][i];
+		}
+	}
+	cout << " |     P1" << endl;
 }
 
 /*********************************************************************
