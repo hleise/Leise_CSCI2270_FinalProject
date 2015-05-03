@@ -96,7 +96,7 @@ Board::~Board()
 **********************************************************************/
 void Board::drawBoard()
 {
-    cout << "     A   B   C   D   E   F" << endl;
+    cout << "P2   A   B   C   D   E   F   P1" << endl;
     cout << endl;
     cout << "   | " << holes[2][5] << " | " << holes[2][4] << " | " << holes[2][3] << " | " << holes[2][2] << " | " << holes[2][1] << " | " << holes[2][0] << " |     P2" << endl;
 
@@ -109,6 +109,10 @@ void Board::drawBoard()
 
     cout << " ========================= " << holes[0][1] << endl;
     cout << "   | " << holes[1][0] << " | " << holes[1][1] << " | " << holes[1][2] << " | " << holes[1][3] << " | " << holes[1][4] << " | " << holes[1][5] << " |     P1" << endl;
+    cout << endl;
+    cout << "Select anything between A - F" << endl;
+    cout << "Press 'm' to return to the menu." << endl;
+    cout << "Press 'q' to quit the application." << endl;
 }
 
 /*********************************************************************

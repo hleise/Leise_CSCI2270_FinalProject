@@ -216,9 +216,9 @@ void Game::player(int id)
     // print player name
     cout << endl;
     if (id == 1) {
-        cout << "Player 1: " << endl;
+        cout << "Player 1 Turn: " << endl;
     } else if (id == 2) {
-        cout << "Player 2: " << endl;
+        cout << "Player 2 Turn: " << endl;
     } else {
         cout << "Something went wrong!" << endl;
         exit(0);
