@@ -98,10 +98,10 @@ void Board::drawBoard()
 {
     cout << "     A   B   C   D   E   F" << endl;
     cout << endl << "  ";
-    for(int i=5;i>=0;i--){
-        if(holes[2][i]<=9){
+    for (int i=5; i>=0; i--) {
+        if (holes[2][i] <= 9) {
             cout << " | " << holes[2][i];
-        }else{
+        } else {
             cout << " |" << holes[2][i];
         }
     }
@@ -114,10 +114,10 @@ void Board::drawBoard()
     }
     
     cout << " =========================== " << holes[0][1] << endl << "  ";
-    for(int i=0;i<6;i++){
-        if(holes[1][i]<=9){
+    for (int i=0;i<6;i++) {
+        if (holes[1][i]<=9) {
             cout << " | " << holes[1][i];
-        }else{
+        } else {
             cout << " |" << holes[1][i];
         }
     }
