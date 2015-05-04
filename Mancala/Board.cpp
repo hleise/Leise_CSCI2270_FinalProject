@@ -99,7 +99,7 @@ void Board::drawBoard()
     cout << "     A   B   C   D   E   F" << endl;
     cout << endl << "  ";
     for(int i=5;i>=0;i--){
-        if(holes[2][i]<=){
+        if(holes[2][i]<=10){
             cout << " | " << holes[2][i];
         }else{
             cout << " |" << holes[2][i];
