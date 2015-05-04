@@ -29,7 +29,6 @@ Hunter Leise
 
 ## Contributors: 
 NelsonKhor
-Hovestar
 
 ## Open issues/bugs: 
 No bugs that I know of. Aesthetically, if someone could make it format better when a hole has over 10 pieces in it that would be great. Even better yet, someone could implement actual graphics if they want!
